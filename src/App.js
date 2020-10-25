@@ -1,25 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect ,useState} from 'react';
+import {  getMatch } from './api';
 import './App.css';
+import Banner from './Banner/Banner.component';
+
+import Live from './Live/Live.component';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import Full from './Full/Full.component';
 
 function App() {
+
+
+  const [match,setMatch]=useState([]);
+  
+  useEffect(()=>{
+    async function fdata(){
+     await getMatch()
+    .then((data)=> setMatch(data.matches))
+    .catch((e)=>console.log(e));
+    
+    }
+    fdata();
+    
+  },[]);
+  console.log(match);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Switch>
+          
+          <Route exact path="/">
+          <Banner/>
+          <div className="Live_compo">
+            {
+                match.filter((match)=>
+                match.type === 'Twenty20')
+                .map((match)=>(
+                  <Live key={match.unique_id} {...match}></Live>
+                ))
+              
+            }
+            </div>
+          </Route>
+          
+          <Route path="/full">
+              <Full />
+          </Route>
+        
+        </Switch>
+      </Router>
+      
+        </div>
+      
+    
   );
 }
 

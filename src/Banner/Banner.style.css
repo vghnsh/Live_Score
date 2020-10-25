@@ -1,0 +1,22 @@
+.banner_img {
+  object-fit: contain;
+  height: 30%;
+}
+.banner_had {
+  height: 15em;
+}
+.fade_bot {
+  height: 15rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}
+
+.black {
+  text-align: center;
+  color: aliceblue;
+  background-color: #111;
+}

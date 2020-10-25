@@ -1,0 +1,48 @@
+.match_title {
+  color: black;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+.data {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.colorB {
+  color: black;
+}
+.size {
+  font-size: 3vw;
+}
+.team {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hov {
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-position: center center;
+  text-decoration: none !important;
+  height: 20vw;
+  width: 61%;
+  margin: 1vw;
+}
+.color {
+  color: black;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+  .hov {
+    height: 60vw;
+    width: 86%;
+    /* margin: 1vw; */
+    margin-top: 4vw;
+  }
+  .size {
+    font-size: 6vw;
+  }
+}

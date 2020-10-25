@@ -1,0 +1,19 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+.msize {
+  font-size: 1em;
+}
+.bg {
+  background-color: ghostwhite;
+}
+@media screen and (max-width: 800px) {
+  .msize {
+    font-size: 0.7em;
+  }
+}
+.color {
+  color: black;
+  font-weight: bold;
+}

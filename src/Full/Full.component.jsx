@@ -4,6 +4,7 @@ import Score from '../Live/Score.component';
 import { Accordion, Card,Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Full.style.css';
+import Fade from 'react-reveal/Fade';
 
 function Full() {
     
@@ -57,7 +58,9 @@ function Full() {
                     
                     </Accordion.Toggle>
                     </div>
-                   
+                    <Fade delay={400}>
+
+                    
                     <Accordion.Collapse eventKey="0">
                     <Card.Body>
                        <Table variant="dark" responsive>
@@ -117,6 +120,7 @@ function Full() {
                        </Table>
                     </Card.Body>
                     </Accordion.Collapse>
+                    </Fade>
                 </Card>
                 <Card>
                     <Accordion.Toggle as={Card.Header} eventKey="1">
@@ -129,6 +133,9 @@ function Full() {
                     </b>
                     </div>
                     </Accordion.Toggle>
+                    <Fade delay={400}>
+
+                    
                     <Accordion.Collapse eventKey="1">
                     <Card.Body>
                        <Table variant="dark" responsive>
@@ -188,6 +195,7 @@ function Full() {
                        </Table>
                     </Card.Body>
                     </Accordion.Collapse>
+                    </Fade>
                 </Card>
             </Accordion>
     

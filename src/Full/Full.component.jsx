@@ -6,34 +6,58 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Full.style.css';
 import Fade from 'react-reveal/Fade';
 
-function Full() {
-    
 
+function Full({}) {
+    
     let location = useLocation();
-    console.log(location);
-    const [full,setFull]=useState([]);
 
+    const[id,setId]=useState([]);
+    const [full,setFull]=useState([]);
+    const[url,setUrl]=useState([]);
     
+  
+    useEffect(() => {
+        if(location.data){
+            setId(location.data)
+            //console.log(location.data)
+        }
+        else{
+            const data = localStorage.getItem("my_id");
+            if (data) {
+                setId(data);
+            }
+        }
+        localStorage.setItem("my_id",id);
+    },[id]);
+
+      
     useEffect(()=>{
-      function f_full_score(){
        
-          const full_url=`https://cricapi.com/api/fantasySummary?unique_id=${location.data}&apikey=DLGhKjAt1Sf9jdMNkP3dksy7RER2`;
-          return fetch(full_url).then((res)=>res.json())
+      async function f_full_score(){
+       
+          const full_url=`https://cricapi.com/api/fantasySummary?unique_id=${id}&apikey=DLGhKjAt1Sf9jdMNkP3dksy7RER2`;
+            setUrl(full_url);
+          await fetch(full_url)
+          .then((res)=>res.json())
+          .then((fdata)=> setFull(fdata))
+          .catch((e)=>console.log(e));
            
       }
       
-      async function getfScore(){
-          await f_full_score()
-              .then((fdata)=> setFull(fdata))
-              .catch((e)=>console.log(e));
-          
-      }
-      getfScore();
       
-    },[]);
+      f_full_score();
+  
+      
+    },[url]);
+
+    console.log(id);
+    console.log(full?.data);
+   
+    
+    
     
     //console.log(full.data.winner_team);
-    console.log(full?.data);
+    
 
     
     //console.log(full.data.batting);
@@ -50,7 +74,7 @@ function Full() {
                     <div>
                     <b>
                         {
-                        full?.data?.batting[0].title
+                        full?.data?.batting[0]?.title
                         }
                         </b>
                     </div>
@@ -72,7 +96,7 @@ function Full() {
                                 <th>Runs</th>
                             </tr>
                             {
-                                full?.data?.batting[0]?.scores.map((scene)=>(
+                                full?.data?.batting[0]?.scores?.map((scene)=>(
                                 <tr>
                                     <td>
                                     {scene.batsman}
@@ -99,7 +123,7 @@ function Full() {
                                 <th>Runs</th>
                             </tr>
                             {
-                                full?.data?.bowling[0]?.scores.map((scene)=>(
+                                full?.data?.bowling[0]?.scores?.map((scene)=>(
                                 <tr>
                                     <td>
                                     {scene.bowler}
@@ -127,7 +151,7 @@ function Full() {
                     <div>
                     <b>
                         {
-                        full?.data?.batting[1].title
+                        full?.data?.batting[1]?.title
                         }
                         
                     </b>

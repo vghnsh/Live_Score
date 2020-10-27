@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link,withRouter} from 'react-router-dom';
 import './Live.style.css';
 import stadium from '../Stadium.jpg';
 import Fade from 'react-reveal/Fade';
@@ -97,4 +97,4 @@ function Live({...match}) {
     )
 }
 
-export default Live;
+export default withRouter(Live);

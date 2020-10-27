@@ -43,7 +43,7 @@ function App() {
             </div>
           </Route>
           
-          <Route path="/full">
+          <Route path="/full" > 
               <Full />
           </Route>
         

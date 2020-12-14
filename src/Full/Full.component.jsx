@@ -35,7 +35,7 @@ function Full({}) {
        
       async function f_full_score(){
        
-          const full_url=`https://cricapi.com/api/fantasySummary?unique_id=${id}&apikey=DLGhKjAt1Sf9jdMNkP3dksy7RER2`;
+          const full_url=`https://cricapi.com/api/fantasySummary?unique_id=${id}&apikey=7Rlv4bvSvOgL1w1k59Yn0xkPrHK2`;
             setUrl(full_url);
           await fetch(full_url)
           .then((res)=>res.json())
@@ -48,10 +48,9 @@ function Full({}) {
       f_full_score();
   
       
-    },[url]);
+    },[url,id]);
 
-    console.log(id);
-    console.log(full?.data);
+    
    
     
     
@@ -121,6 +120,7 @@ function Full({}) {
                                 <th>Economy</th>
                                 <th>Overs</th>
                                 <th>Runs</th>
+                                <th>Wickets</th>
                             </tr>
                             {
                                 full?.data?.bowling[0]?.scores?.map((scene)=>(
@@ -137,6 +137,9 @@ function Full({}) {
                                     </td>
                                     <td>
                                     <b>{scene.R}</b>
+                                    </td>
+                                    <td>
+                                    <b>{scene.W}</b>
                                     </td>
                                 </tr>
                                 ))
@@ -196,6 +199,7 @@ function Full({}) {
                                 <th>Economy</th>
                                 <th>Overs</th>
                                 <th>Runs</th>
+                                <th>Wickets</th>
                             </tr>
                             {
                                 full?.data?.bowling[1]?.scores.map((scene)=>(
@@ -212,6 +216,9 @@ function Full({}) {
                                     </td>
                                     <td>
                                     <b>{scene.R}</b>
+                                    </td>
+                                    <td>
+                                    <b>{scene.W}</b>
                                     </td>
                                 </tr>
                                 ))

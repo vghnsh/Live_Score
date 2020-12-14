@@ -22,7 +22,7 @@ function App() {
     fdata();
     
   },[]);
-  console.log(match);
+  
   
   return (
     <div className="App">

@@ -8,7 +8,7 @@ function Score({unique_id}) {
   useEffect(()=>{
     async function fscore(){
      
-        const score_url=`https://cricapi.com/api/cricketScore?unique_id=${unique_id}&apikey=DLGhKjAt1Sf9jdMNkP3dksy7RER2`;
+        const score_url=`https://cricapi.com/api/cricketScore?unique_id=${unique_id}&apikey=7Rlv4bvSvOgL1w1k59Yn0xkPrHK2`;
         return await fetch(score_url).then((res)=>res.json())
          
     }
